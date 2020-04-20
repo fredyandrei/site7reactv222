@@ -11,48 +11,48 @@ export class App extends Component {
 
 state={
   todos:[
-    {title : 'Nothing Special' , status : false, cod : 1}, 
-    {title : 'Nothing so Special', status : false, cod : 2}
+    {title : 'Nothing Special' , completed : false, id : 1}, 
+    {title : 'Nothing so Special', completed : false, id : 2}
   ],
-  showCompletion:0,
+  itemsToShow:0,
 }
 
 
-markComplete = (cod) =>{
+markComplete = (id) =>{
   this.setState({todos: this.state.todos.map(todo => {
-    if(todo.cod===cod)
-      todo.status = !todo.status;
+    if(todo.id===id)
+      todo.completed = !todo.completed;
       return todo;
   }) })
 }
 
-delTodo = (cod) =>{
-  this.setState({todos: this.state.todos.filter(todo => todo.cod!==cod)})
+delTodo = (id) =>{
+  this.setState({todos: this.state.todos.filter(todo => todo.id!==id)})
 }
 
 addTodo = (title) =>{
 const newTodo={
-  status:false,
+  completed:false,
   title,
-  cod:uuidv4()
+  id:uuidv4()
   }
   this.setState({todos: [...this.state.todos, newTodo]})
 } 
 
 showAll = () =>{
-  this.setState({showCompletion: 0})
+  this.setState({itemsToShow: 0})
 }
 
 showUncompleted = () =>{
-  this.setState({showCompletion: 1})
+  this.setState({itemsToShow: 1})
 }
 
 showCompleted = () =>{
-  this.setState({showCompletion: 2})
+  this.setState({itemsToShow: 2})
 }
 
 delCompleted = () =>{
-  this.setState({todos: this.state.todos.filter(todo => todo.status!==true)})
+  this.setState({todos: this.state.todos.filter(todo => todo.completed!==true)})
 }
 
   render() {
@@ -60,7 +60,7 @@ delCompleted = () =>{
     return (
       <div className="App">
         <AddTodo addTodo={ this.addTodo} />
-        <Todos todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } showCompletion={this.state.showCompletion}/>
+        <Todos todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } itemsToShow={this.state.itemsToShow}/>
         <TodoBar showAll={this.showAll} showUncompleted={this.showUncompleted} showCompleted={this.showCompleted} delCompleted={this.delCompleted} />
       </div>
     );
