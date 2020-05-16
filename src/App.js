@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import Todos from './components/Todos'
+import TodosVeryHigh from './components/TodosVeryHigh'
+import TodosHigh from './components/TodosHigh'
+import TodosMedium from './components/TodosMedium'
+import TodosLow from './components/TodosLow'
 import AddTodo from './components/AddTodo'
 import TodoBar from './components/TodoBar'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,8 +14,8 @@ export class App extends Component {
 
 state={
   todos:[
-    {title : 'Nothing Special' , completed : false, id : 1}, 
-    {title : 'Nothing so Special', completed : false, id : 2}
+    {title : 'Nothing Special', priority: 'Very High', completed : false, id : 1}, 
+    {title : 'Nothing so Special', priority: 'Low', completed : false, id : 2}, 
   ],
   itemsToShow:0,
 }
@@ -30,10 +33,11 @@ delTodo = (id) =>{
   this.setState({todos: this.state.todos.filter(todo => todo.id!==id)})
 }
 
-addTodo = (title) =>{
+addTodo = (title, priority) =>{
 const newTodo={
   completed:false,
   title,
+  priority,
   id:uuidv4()
   }
   this.setState({todos: [...this.state.todos, newTodo]})
@@ -59,9 +63,14 @@ delCompleted = () =>{
 
     return (
       <div className="App">
-        <AddTodo addTodo={ this.addTodo} />
-        <Todos todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } itemsToShow={this.state.itemsToShow}/>
         <TodoBar showAll={this.showAll} showUncompleted={this.showUncompleted} showCompleted={this.showCompleted} delCompleted={this.delCompleted} />
+        <div className="todoScroll">
+          <TodosVeryHigh todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } itemsToShow={this.state.itemsToShow}/>
+          <TodosHigh todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } itemsToShow={this.state.itemsToShow}/>
+          <TodosMedium todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } itemsToShow={this.state.itemsToShow}/>
+          <TodosLow todos={ this.state.todos } markComplete={ this.markComplete } delTodo={ this.delTodo } itemsToShow={this.state.itemsToShow}/>
+        </div>
+        <AddTodo addTodo={ this.addTodo} />
       </div>
     );
   }

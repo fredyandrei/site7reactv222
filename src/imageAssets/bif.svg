@@ -1,0 +1,10 @@
+<svg id="Component_2_1" data-name="Component 2 – 1" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <g id="Component_1_1" data-name="Component 1 – 1">
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="21" height="21" rx="7" fill="#1aff00"/>
+  </g>
+  <g id="tick_1_" data-name="tick (1)" transform="translate(4.499 -62.036)">
+    <g id="Group_1" data-name="Group 1" transform="translate(0 67.997)">
+      <path id="Path_1" data-name="Path 1" d="M10.842,68.159a.55.55,0,0,0-.778,0L3.472,74.75.939,72.217a.55.55,0,0,0-.778.778l2.923,2.923a.55.55,0,0,0,.778,0l6.981-6.981A.55.55,0,0,0,10.842,68.159Z" transform="translate(0 -67.997)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

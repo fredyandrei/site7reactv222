@@ -1,6 +1,25 @@
 import React, { Component } from 'react'
 
 export class TodoItem extends Component {
+
+    
+
+    getLine = () =>{
+        if(this.props.todo.completed){
+            return {
+                backgroundColor: '#1AFF00' , 
+                boxShadow: '0px 0px 10px 2.5px #1AFF0050',
+                height:this.scrollheight,
+            }
+        }else{
+            return {
+                backgroundColor: '#FF006F' ,
+                boxShadow: '0px 0px 10px 2.5px #FF006F50',
+                height:this.scrollheight,
+            }
+        }
+    }
+
     getStyle = () =>{
         return {
             padding: '10px',
@@ -10,16 +29,20 @@ export class TodoItem extends Component {
     }
 
     render() {
-        const {id, title } = this.props.todo;
+        const {id, title, priority } = this.props.todo;
         return (
             <div className='container'>
-                <p className='todoElement'>
-                    <div style={this.getStyle() } >
-                        <input type='checkbox' onChange={this.props.markComplete.bind(this, id)} />
-                        {title}
+                <div className='todoElement'>
+                    <input className="done"  type='checkbox' onChange={this.props.markComplete.bind(this, id)}  />
+                    <div className="height">
+                        <div className="line" style={this.getLine()}></div>
+                        <div className="text">
+                            <p className="todoTitle" style={this.getStyle() } >{title}</p>
+                            <p className="prio" >{priority}</p>
                         </div>
-                        <span className='redX' onClick={this.props.delTodo.bind(this, id)}  >X</span> 
-                </p>
+                    </div>
+                    <span className='deleteX' onClick={this.props.delTodo.bind(this, id)}  >X</span> 
+                </div>
             </div>
         )
     }
