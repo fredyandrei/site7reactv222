@@ -2,7 +2,14 @@ import React, { Component } from 'react'
 
 export class TodoItem extends Component {
 
-    
+    checkCompleted = () =>{
+            return {
+                backgroundColor: this.props.todo.completed ?
+                '#1AFF00' : '#ffffff',
+                border:this.props.todo.completed ?
+                'none' : '2px solid #D7DBE6'
+            }
+    }
 
     getLine = () =>{
         if(this.props.todo.completed){
@@ -33,7 +40,7 @@ export class TodoItem extends Component {
         return (
             <div className='container'>
                 <div className='todoElement'>
-                    <input className="done"  type='checkbox' onChange={this.props.markComplete.bind(this, id)}  />
+                    <input className="done"  style={this.checkCompleted()} type='checkbox' onChange={this.props.markComplete.bind(this, id)}  />
                     <div className="height">
                         <div className="line" style={this.getLine()}></div>
                         <div className="text">

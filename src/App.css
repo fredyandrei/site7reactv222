@@ -380,14 +380,15 @@ transform:translate(-35%, 50%)
 }
 
 .done{
-  background-image: none;
   display:flex;
   cursor: pointer;
   width: 21px;
   height: 21px;
   margin: 15px;
-  border:2px solid #D7DBE6;
   border-radius: 22% / 26%;
+  background-image: url("./imageAssets/bif.png");
+  background-position: center;
+  background-repeat: no-repeat;
   -webkit-appearance: none;
   transition:0.5s;
   position:relative;
@@ -397,13 +398,6 @@ transform:translate(-35%, 50%)
 
 .done:focus{
   outline:none;
-}
-
-.done:checked{
-  background-image: url("./imageAssets/bif.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  border:none;
 }
 
 
